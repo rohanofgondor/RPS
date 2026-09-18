@@ -1,16 +1,7 @@
-let rpsAI = Math.floor(Math.random() * 3) + 1; // AI's choice
-let rpsPlayer = prompt('Pick one', 'Rock, Paper, Scissors')
-    console.log('Player =', `${rpsPlayer}`)
-
-let scoreTrackerAI = rpsAI;
-    // if (scoreTrackerAI === 1 && scoreTrackerPlayer === 3 ) {
-    //  for (scoreTrackerAI === 0;  scoreTrackerAI++
-    //      console.log ('
-    // }
-    // console.log(scoreTrackerAI)
-
-let scoreTrackerPlayer = rpsPlayer;
-    // console.log(scoreTrackerPlayer)
+let rpsAI = Math.floor(Math.random() * 3) + 1; // AI's choice)
+let rpsPlayer = 'Scissors';
+    // prompt('Pick one', 'Rock, Paper, Scissors')
+    console.log('Player Choice:', `${rpsPlayer}`)
 
 // Step 2 (as per TOP)
 function aIChoice() {
@@ -19,69 +10,94 @@ function aIChoice() {
     // Adding 1 shifts that range to 1 up to but not including 11.
     // Math.floor() then rounds down, so you get an integer between 1 and 3.
     if (rpsAI === 1) {
-        return console.log('Rock'); // 1 wins over 3 // 1 loses to 2
+        return console.log('AI Choice: Rock'); // 1 wins over 3 // 1 loses to 2
     }
     else if (rpsAI === 2) {
-        return console.log('Paper'); // 2 wins over 1 // 2 loses to 3
+        return console.log('AI Choice: Paper'); // 2 wins over 1 // 2 loses to 3
     }
     else if (rpsAI === 3) {
-        return console.log('Scissors'); // 3 wins over 2 // loses to 1
+        return console.log('AI Choice: Scissors'); // 3 wins over 2 // loses to 1
     }
 }
 aIChoice();
 
+let scoreTrackerAI; // not being used right 604 pm now but will be handy down the line, could also make into a function
+                    // Suggestion - could convert to switch/cases to lower down code
+                    // Plan is to write it as it is in if else statements, make it work, optimize it later
+    if (rpsAI === 1 && playerChoice() === 3) {
+        console.log('AI Wins')
+    }
+    else if (rpsAI === 1 && playerChoice() === 2) {
+        console.log('AI Lose')
+    }
+    else if (rpsAI === 1 && playerChoice() === 1) {
+        console.log('Draw')
+    }
+    else if (rpsAI === 2 && playerChoice() === 1) {
+        console.log('AI Wins')
+    }
+    else if (rpsAI === 2 && playerChoice() === 3) {
+        console.log('AI Lose')
+    }
+    else if (rpsAI === 2 && playerChoice() === 2) {
+        console.log('Draw')
+    }
+    else if (rpsAI === 3 && playerChoice() === 2) {
+        console.log('AI Wins')
+    }
+    else if (rpsAI === 3 && playerChoice() === 1) {
+        console.log('AI Loses')
+    }
+    else if (rpsAI === 3 && playerChoice() === 3) {
+        console.log('Draw')
+    }
+
 function playerChoice () { // Suggestion - Could add RPS as parameters + Add cases for esc/cancel button
     if (rpsPlayer === 'Rock') {
-        return console.log(1);
+        return (1);
     }
     else if (rpsPlayer === 'Paper') {
-        return console.log(2);
+        return (2);
     }
     else if (rpsPlayer === 'Scissors' || rpsPlayer === 'scissors') {
-        return console.log(3);
+        return (3);
     }
 }
-playerChoice ()
 
-function aiScore() {
-}
-aiScore();
+let scoreTrackerPlayer = rpsPlayer;
+// console.log(scoreTrackerPlayer)
 
+
+
+
+// Let's write logic for this:
+// RPS Outcomes:
+// Rock beats Scissors && Loses against Paper. (1 beats 3 / 1 loses to 2)
+// Paper beats Rock && Loses against Scissors. ( 2 beats 1 / 2 loses to 3)
+// Scissors beat Paper && Loses against Rock. ( 3 beats 2 / 3 loses to 1)
+// Draw = Rock v Rock = D, Paper vs Paper = D, Scissors vs Scissors = D
+// ** In total each choice has three variations W L D**
+
+// console.log(scoreTrackerAI)
 
 // Variable declarations list
     // rpsAI = Runs the logic/algo, logs AI choice
     // aIChoice = Supports and Acts upon rpsAI's logic
     // scoreTrackerAI = Tracks AI's W/L score
 
-
     // rpsPlayer = Prompts player for choice
-    // playerChoice =
+    // playerChoice = Converts String choices into numbers to support below variable.
     // scoreTrackerPlayer = Tracks Players score
 
     //
 
 // could make it so that if else statements sends in two values one is string and one is number, with number we can proceed further
 
-
-// Step 3 (as per TOP)
-// function  getHumanChoice () {
-//     return (console.log(rpsPlayer));
-// }
-// getHumanChoice()
-
-// Step 4
+// Step 4**
 //  Step 4: Declare the players score variables
 //  Your game will keep track of the players score. You will write variables to keep track of the players score.
 //  Create two new variables named humanScore and computerScore in the global scope.
 //  Initialize those variables with the value of 0.
-
-// Let's write logic for this:
-// RPS Outcomes:
-// Rock beats Scissors && Loses against Paper.
-// Paper beats Rock && Loses against Scissors.
-// Scissors beat Paper && Loses against Rock
-// Draw = Rock v Rock = D, Paper vs Paper = D, Scissors vs Scissors = D
-
 
 // Create the player's function properly first, i.e If a player enters Rock assign it to number integers data type 1, Paper 2 and Scissors 3
 // Then pull that number and AIs number into the tracker functions and use for loop to increment the scores
