@@ -1,65 +1,81 @@
-let rpsComputer;
-let rpsPlayer =  prompt('What do you pick?') // feels like prompt should be inside but whatever we'll see first 'Rock';
 let scoreDraw;
 let computerScore = 0;
 let playerScore = 0;
 
-// This function displays/logs AIs choice in words (string)
-function getComputerChoice() {   // function scope
-        rpsComputer = Math.floor(Math.random() * 3) + 1; // AI's choice) // Global Scope
+
+function roundCHelper() {  // This FUNCTION returns AIs choice in numbers.
+    let rpsComputer = Math.floor(Math.random() * 3) + 1;
         if (rpsComputer === 1) {
-            return 'Rock';
-            // return computerChoice = 'Computer Choice: Rock';  playRound Param // return 'Computer Choice: Rock' // console.log('Computer Choice: Rock');
+            return 1;
         } else if (rpsComputer === 2) {
-            return 'Paper';
-            // return computerChoice = 'Computer Choice: Paper'; playRound Param // return 'Computer Choice: Paper' // return console.log('Computer Choice: Paper'); // console.log('Computer Choice: Paper');
+            return 2;
         } else if (rpsComputer === 3) {
-            return 'Scissors';
-            // return computerChoice = 'Computer Choice: Scissors'; // playRound Param // return 'Computer Choice: Scissors' // return console.log('Computer Choice: Scissors'); // console.log('Computer Choice: Scissors');
+            return 3;
         }
-    }
-    getComputerChoice()
-        // console.log(getComputerChoice())
-
-// This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner()
-function roundHelper() { // function scope - // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-    if (rpsPlayer === 'Rock') {
-        return (1); // playerChoice = 'Rock';
-    } else if (rpsPlayer === 'Paper') {
-        return (2);   // playerChoice = 'Paper';
-    } else if (rpsPlayer === 'Scissors' || rpsPlayer === 'scissors') {
-        return (3);  // playerChoice = 'Scissors';
-    }
 }
-    roundHelper()
-    //console.log(roundHelper())
+         roundCHelper()
+            let helperCStore = roundCHelper(); // This VARIABLE Helps getComputerChoice() output a string.
+            // console.log(helperCStore)
 
-function getPlayerChoice() { // function scope - // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-            return rpsPlayer;
-    }
-    getPlayerChoice()
-        // console.log((getPlayerChoice())); // console.log('Player Choice:', `${rpsPlayer}`)
-
-// This code decides and shows who wins/loses/draws // 4 = AI won 5 = Player 6 = Draw//
-// TODO - could convert to switch/cases to lower down code. Plan is to write it as it is in if else statements, make it work, optimize it later
-function roundWinner() {
-        if (rpsComputer === 1 && roundHelper() === 3 || rpsComputer === 2 && roundHelper() === 1 || rpsComputer === 3 && roundHelper() === 2) {
-            console.log('Round Winner: AI')
-            // return aiScore = scoreAI++;
-        } else if (rpsComputer === 1 && roundHelper() === 2 || rpsComputer === 2 && roundHelper() === 3 || rpsComputer === 3 && roundHelper() === 1) {
-            console.log('Round Winner: Player')
-            // return playerScore = scorePlayer++;
-        } else if (rpsComputer === 1 && roundHelper() === 1 || rpsComputer === 2 && roundHelper() === 2 || rpsComputer === 3 && roundHelper() === 3) {
-            console.log('Draw')
-            scoreDraw = 6;
+function getComputerChoice() {   // This function displays/logs AIs choice in words (string)
+        if (helperCStore === 1) {
+            return 'Rock';
+        } else if (helperCStore === 2) {
+            return 'Paper';
+        } else if (helperCStore === 3) {
+            return 'Scissors';
         }
     }
-    roundWinner()
+         getComputerChoice()
+            // console.log(getComputerChoice())
+            console.log(`AI Choice: ${getComputerChoice()}`)
+
+function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
+    rpsPlayer = 'Rock'
+        return rpsPlayer;
+}
+         let playerChoiceStore = getPlayerChoice();
+            console.log(`Player Choice: ${playerChoiceStore}`)
+            // getPlayerChoice()
+
+
+function roundPHelper() { // This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner() // TODO - Could add RPS as parameters + Add cases for esc/cancel button
+        if (playerChoiceStore === 'Rock') {
+            return (1);
+        } else if (playerChoiceStore === 'Paper') {
+            return (2);
+        } else if (playerChoiceStore === 'Scissors') {
+            return (3);
+        }
+}
+         roundPHelper()
+            let helperPStore = roundPHelper()
+
+function roundWinner() { // This code decides and shows who wins/loses/draws // 4 = AI won 5 = Player 6 = Draw // TODO - could convert to switch/cases to lower down code. Plan is to write it as it is in if else statements, make it work, optimize it later
+        if (helperCStore === 1 && helperPStore === 3 || helperCStore === 2 && helperPStore === 1 || helperCStore === 3 && helperPStore === 2) {
+            return 'Round Winner: AI';
+        } else if (helperCStore === 1 && roundPHelper() === 2 || helperCStore === 2 && roundPHelper() === 3 || helperCStore === 3 && helperPStore === 1) {
+            return 'Round Winner: Player';
+        } else if (helperCStore === 1 && helperPStore === 1 || helperCStore === 2 && helperPStore === 2 || helperCStore === 3 && helperPStore === 3) {
+            return 'Draw';
+        }
+    }
+         roundWinner()
+            let roundWinnerStore = roundWinner();
+            console.log(roundWinnerStore)
+
+function playRound (playerChoice, computerChoice) {
+
+}
+
+
+
+
+
 
 // function testfunction () {
 //     if ()
 // }
-
 
 // console.log('AI has won',`${scoreAI}`, 'times' )
 // console.log('Player has won',`${scorePlayer}`, 'times' )
@@ -80,9 +96,9 @@ function roundWinner() {
 // let multiplySet = multiply(50,50)
 // console.log(multiplySet)
 
-function playRound (playerChoice, computerChoice) { // basically declaring new variables
-
-    }
+// function playRound (playerChoice, computerChoice) { // basically declaring new variables
+//
+//     }
 // im getting it, basically the above functions 'get' ones are supposed to return values TO the function playRound's
 // params playerchoice aand computerchoice and process them as arguments
 
