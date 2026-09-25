@@ -1,9 +1,25 @@
-let scoreDraw;
-let computerScore = 0;
-let playerScore = 0;
+// let scoreDraw;
+function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
+        rpsPlayer = prompt('Pick choice');
+        return rpsPlayer;
+}
+        let playerChoiceStore = getPlayerChoice();
+        // console.log(`Player Choice: ${playerChoiceStore}`)
+        // getPlayerChoice()
 
+function playerHelper() { // This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner() // TODO - Could add RPS as parameters + Add cases for esc/cancel button
+        if (playerChoiceStore === 'Rock') {
+            return (1);
+        } else if (playerChoiceStore === 'Paper') {
+            return (2);
+        } else if (playerChoiceStore === 'Scissors') {
+            return (3);
+        }
+}
+        playerHelper()
+        let helperPStore = playerHelper()
 
-function roundCHelper() {  // This FUNCTION returns AIs choice in numbers.
+function computerHelper() {  // This FUNCTION returns AIs choice in numbers.
     let rpsComputer = Math.floor(Math.random() * 3) + 1;
         if (rpsComputer === 1) {
             return 1;
@@ -13,8 +29,8 @@ function roundCHelper() {  // This FUNCTION returns AIs choice in numbers.
             return 3;
         }
 }
-         roundCHelper()
-            let helperCStore = roundCHelper(); // This VARIABLE Helps getComputerChoice() output a string.
+         computerHelper()
+            let helperCStore = computerHelper(); // This VARIABLE Helps getComputerChoice() output a string.
             // console.log(helperCStore)
 
 function getComputerChoice() {   // This function displays/logs AIs choice in words (string)
@@ -26,51 +42,40 @@ function getComputerChoice() {   // This function displays/logs AIs choice in wo
             return 'Scissors';
         }
     }
-         getComputerChoice()
+        let computerChoiceStore = getComputerChoice()
             // console.log(getComputerChoice())
-            console.log(`AI Choice: ${getComputerChoice()}`)
+            // console.log(`AI Choice: ${getComputerChoice()}`)
 
-function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-    rpsPlayer = 'Rock'
-        return rpsPlayer;
-}
-         let playerChoiceStore = getPlayerChoice();
-            console.log(`Player Choice: ${playerChoiceStore}`)
-            // getPlayerChoice()
-
-
-function roundPHelper() { // This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner() // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-        if (playerChoiceStore === 'Rock') {
-            return (1);
-        } else if (playerChoiceStore === 'Paper') {
-            return (2);
-        } else if (playerChoiceStore === 'Scissors') {
-            return (3);
-        }
-}
-         roundPHelper()
-            let helperPStore = roundPHelper()
-
-function roundWinner() { // This code decides and shows who wins/loses/draws // 4 = AI won 5 = Player 6 = Draw // TODO - could convert to switch/cases to lower down code. Plan is to write it as it is in if else statements, make it work, optimize it later
-        if (helperCStore === 1 && helperPStore === 3 || helperCStore === 2 && helperPStore === 1 || helperCStore === 3 && helperPStore === 2) {
-            return 'Round Winner: AI';
-        } else if (helperCStore === 1 && roundPHelper() === 2 || helperCStore === 2 && roundPHelper() === 3 || helperCStore === 3 && helperPStore === 1) {
-            return 'Round Winner: Player';
-        } else if (helperCStore === 1 && helperPStore === 1 || helperCStore === 2 && helperPStore === 2 || helperCStore === 3 && helperPStore === 3) {
-            return 'Draw';
-        }
-    }
-         roundWinner()
-            let roundWinnerStore = roundWinner();
-            console.log(roundWinnerStore)
+let computerScore = 0;
+let playerScore = 0;
 
 function playRound (playerChoice, computerChoice) {
-
+        playerChoice = playerChoiceStore;
+        console.log(playerChoiceStore)
+        computerChoice = computerChoiceStore;
+        console.log(computerChoiceStore)
+        if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Paper' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Scissors' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Rock') {
+            return 'Round Winner: Player';
+        }
+        else if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Scissors' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Rock' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Paper') {
+            return 'Round Winner: AI';
+        }
+        else if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Rock' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Paper' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Scissors') {
+            return 'Draw, Nobody wonPaper';
+        }
 }
 
+let roundDecision = playRound();
+console.log(roundDecision)
 
 
+// const playerSelection = getPlayerChoice();
+// const computerSelection = getComputerChoice();
 
+// console.log(playerSelection)
+// console.log(computerSelection)
+
+// playRound (playerSelection, computerSelection)
 
 
 // function testfunction () {
@@ -106,3 +111,16 @@ function playRound (playerChoice, computerChoice) {
 
 // when you come back, change the return values for 'get' variables and make them return values, and take those returned
 // values into  playRounds params and pass them as arguments
+
+// function roundWinner() { // This code decides and shows who wins/loses/draws // 4 = AI won 5 = Player 6 = Draw // TODO - could convert to switch/cases to lower down code. Plan is to write it as it is in if else statements, make it work, optimize it later
+//         if (helperCStore === 1 && helperPStore === 3 || helperCStore === 2 && helperPStore === 1 || helperCStore === 3 && helperPStore === 2) {
+//             return 'Round Winner: AI';
+//         } else if (helperCStore === 1 && playerHelper() === 2 || helperCStore === 2 && playerHelper() === 3 || helperCStore === 3 && helperPStore === 1) {
+//             return 'Round Winner: Player';
+//         } else if (helperCStore === 1 && helperPStore === 1 || helperCStore === 2 && helperPStore === 2 || helperCStore === 3 && helperPStore === 3) {
+//             return 'Draw';
+//         }
+//     }
+// roundWinner()
+//    let roundWinnerStore = roundWinner();
+//    console.log(roundWinnerStore)
