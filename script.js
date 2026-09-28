@@ -1,81 +1,72 @@
 // let scoreDraw;
+// let computerScore = 0;
+// let playerScore = 0;
 function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-        rpsPlayer = prompt('Pick choice');
+        rpsPlayer = prompt('What are you gonna pick?');
         return rpsPlayer;
 }
-        let playerChoiceStore = getPlayerChoice();
-        // console.log(`Player Choice: ${playerChoiceStore}`)
-        // getPlayerChoice()
 
-function playerHelper() { // This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner() // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-        if (playerChoiceStore === 'Rock') {
-            return (1);
-        } else if (playerChoiceStore === 'Paper') {
-            return (2);
-        } else if (playerChoiceStore === 'Scissors') {
-            return (3);
-        }
-}
-        playerHelper()
-        let helperPStore = playerHelper()
-
-function computerHelper() {  // This FUNCTION returns AIs choice in numbers.
-    let rpsComputer = Math.floor(Math.random() * 3) + 1;
-        if (rpsComputer === 1) {
-            return 1;
-        } else if (rpsComputer === 2) {
-            return 2;
-        } else if (rpsComputer === 3) {
-            return 3;
-        }
-}
-         computerHelper()
-            let helperCStore = computerHelper(); // This VARIABLE Helps getComputerChoice() output a string.
-            // console.log(helperCStore)
-
-function getComputerChoice() {   // This function displays/logs AIs choice in words (string)
-        if (helperCStore === 1) {
+function getComputerChoice(computerMath) {   // This function displays/logs AIs choice in words (string)
+        computerMath = Math.floor(Math.random() * 3) + 1;
+        if (computerMath === 1) {
             return 'Rock';
-        } else if (helperCStore === 2) {
+        } else if (computerMath === 2) {
             return 'Paper';
-        } else if (helperCStore === 3) {
+        } else if (computerMath === 3) {
             return 'Scissors';
         }
     }
-        let computerChoiceStore = getComputerChoice()
-            // console.log(getComputerChoice())
-            // console.log(`AI Choice: ${getComputerChoice()}`)
 
-let computerScore = 0;
-let playerScore = 0;
+function playRound (player, computer) {
+        console.log(`Player picked: ${player}`);
+        console.log(`AI picked: ${computer}`);
+        if (computer === 'Rock' && player === 'Paper' || computer === 'Paper' && player === 'Scissors' || computer === 'Scissors' && player === 'Rock') {
+            console.log('Round Winner: Player');
+        }
+        else if (computer === 'Rock' && player === 'Scissors' || computer === 'Paper' && player === 'Rock' || computer === 'Scissors' && player === 'Paper') {
+            console.log('Round Winner: AI');
+        }
+        else if (computer === 'Rock' && player === 'Rock' || computer === 'Paper' && player === 'Paper' || computer === 'Scissors' && player === 'Scissors') {
+            console.log('Draw, Nobody won.'); //
+        }
 
-function playRound (playerChoice, computerChoice) {
-        playerChoice = playerChoiceStore;
-        console.log(playerChoiceStore)
-        computerChoice = computerChoiceStore;
-        console.log(computerChoiceStore)
-        if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Paper' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Scissors' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Rock') {
-            return 'Round Winner: Player';
-        }
-        else if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Scissors' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Rock' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Paper') {
-            return 'Round Winner: AI';
-        }
-        else if (computerChoiceStore === 'Rock' && playerChoiceStore === 'Rock' || computerChoiceStore === 'Paper' && playerChoiceStore === 'Paper' || computerChoiceStore === 'Scissors' && playerChoiceStore === 'Scissors') {
-            return 'Draw, Nobody wonPaper';
-        }
 }
 
-let roundDecision = playRound();
-console.log(roundDecision)
+const playerSelection = getPlayerChoice();
+const computerSelection = getComputerChoice();
 
+playRound(playerSelection, computerSelection)
 
-// const playerSelection = getPlayerChoice();
-// const computerSelection = getComputerChoice();
+// console.log(`Player Choice: ${playerSelection}`)
 
-// console.log(playerSelection)
-// console.log(computerSelection)
+// let roundDecision = playRound();
+// console.log(roundDecision)
 
-// playRound (playerSelection, computerSelection)
+// function playerHelper() { // This function converts the string data type derived from rpsPlayer to a number. It helps decide the winner in roundWinner() // TODO - Could add RPS as parameters + Add cases for esc/cancel button
+//     if (playerChoiceStore === 'Rock') {
+//         return (1);
+//     } else if (playerChoiceStore === 'Paper') {
+//         return (2);
+//     } else if (playerChoiceStore === 'Scissors') {
+//         return (3);
+//     }
+// }
+// playerHelper()
+// let helperPStore = playerHelper()
+
+// function computerHelper() {  // This FUNCTION returns AIs choice in numbers.
+//     let rpsComputer = Math.floor(Math.random() * 3) + 1;
+//         if (rpsComputer === 1) {
+//             return 1;
+//         } else if (rpsComputer === 2) {
+//             return 2;
+//         } else if (rpsComputer === 3) {
+//             return 3;
+//         }
+// }
+//          computerHelper()
+//             let helperCStore = computerHelper(); // This VARIABLE Helps getComputerChoice() output a string.
+// console.log(helperCStore)
 
 
 // function testfunction () {
