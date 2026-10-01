@@ -1,11 +1,13 @@
 // let scoreDraw;
-let playerScore = 0;
-let computerScore = 0;
-
 function playGame() {
+    let playerScore = 0;
+    let computerScore = 0;
     function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
-        rpsPlayer = 'Rock';
-        //rpsPlayer = prompt('What are you gonna pick?');
+        rpsPlayer = prompt('What are you gonna pick?')
+        // rpsPlayer = 'papEr';
+        let rpsPlayerH0 = rpsPlayer.at(0).toUpperCase();
+        let rpsPlayerH1 = rpsPlayer.slice(1).toLowerCase();
+        rpsPlayer = rpsPlayerH0 + rpsPlayerH1;
         return rpsPlayer;
     }
 
@@ -42,25 +44,12 @@ function playGame() {
 
         console.log(`Your Score: ${playerScore}`);
         console.log(`Computer's Score: ${computerScore}`);
-        console.log('-------------------')
+        console.log('---------------------------------')
     }
-
-    bo5()
-    bo5()
-    bo5()
-    bo5()
-    bo5()
-
+        bo5()
+        bo5()
+        bo5()
+        bo5()
+        bo5()
 }
-
 playGame()
-
-
-
-// const playerSelection2 = getPlayerChoice();
-// const computerSelection2 = getComputerChoice();
-// playRound(playerSelection2, computerSelection2)
-//
-// console.log(`Your Score: ${playerScore}`);
-// console.log(`Computer's Score: ${computerScore}`)
-// console.log('-------------------')
