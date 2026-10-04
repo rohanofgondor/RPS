@@ -1,8 +1,8 @@
-// let scoreDraw;
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
 
+    // To get player's choice
     function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
         rpsPlayer = prompt('What are you gonna pick?')
         // rpsPlayer = 'papEr';
@@ -12,6 +12,7 @@ function playGame() {
         return rpsPlayer;
     }
 
+    // To get computer's choice
     function getComputerChoice(computerMath) {
         computerMath = Math.floor(Math.random() * 3) + 1;
         if (computerMath === 1) {
@@ -23,6 +24,7 @@ function playGame() {
         }
     }
 
+    // Compare P and C's choices and decide on a winner, announce the winner of the round, track the score
     function playRound(player, computer) {
         console.log(`You picked: ${player}`);
         console.log(`Computer picked: ${computer}`);
@@ -41,6 +43,7 @@ function playGame() {
         }
     }
 
+    // Runs 5 rounds of RPS
     function fiveRounds () {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
