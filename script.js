@@ -28,12 +28,15 @@ function playGame() {
 
         if (computer === 'Rock' && player === 'Paper' || computer === 'Paper' && player === 'Scissors' || computer === 'Scissors' && player === 'Rock') {
             console.log('Round Winner: Player');
+            alert('You won!');
             playerScore++;
         } else if (computer === 'Rock' && player === 'Scissors' || computer === 'Paper' && player === 'Rock' || computer === 'Scissors' && player === 'Paper') {
             console.log('Round Winner: Computer');
+            alert('Computer won!');
             computerScore++;
         } else if (computer === 'Rock' && player === 'Rock' || computer === 'Paper' && player === 'Paper' || computer === 'Scissors' && player === 'Scissors') {
             console.log('Draw'); //
+            alert('Draw!');
         }
     }
 
