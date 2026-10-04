@@ -40,7 +40,7 @@ function playGame() {
         }
     }
 
-    function bo5 () {
+    function fiveRounds () {
         const playerSelection = getPlayerChoice();
         const computerSelection = getComputerChoice();
         playRound(playerSelection, computerSelection)
@@ -49,10 +49,10 @@ function playGame() {
         console.log(`Computer's Score: ${computerScore}`);
         console.log('---------------------------------')
     }
-        bo5()
-        bo5()
-        bo5()
-        bo5()
-        bo5()
+        fiveRounds()
+        fiveRounds()
+        fiveRounds()
+        fiveRounds()
+        fiveRounds()
 }
 playGame()
