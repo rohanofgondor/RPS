@@ -2,6 +2,7 @@
 function playGame() {
     let playerScore = 0;
     let computerScore = 0;
+
     function getPlayerChoice(rpsPlayer) {  // TODO - Could add RPS as parameters + Add cases for esc/cancel button
         rpsPlayer = prompt('What are you gonna pick?')
         // rpsPlayer = 'papEr';
@@ -28,15 +29,15 @@ function playGame() {
 
         if (computer === 'Rock' && player === 'Paper' || computer === 'Paper' && player === 'Scissors' || computer === 'Scissors' && player === 'Rock') {
             console.log('Round Winner: Player');
-            alert('You won!');
+            alert(`You won! ${player} beats ${computer}!`)
             playerScore++;
         } else if (computer === 'Rock' && player === 'Scissors' || computer === 'Paper' && player === 'Rock' || computer === 'Scissors' && player === 'Paper') {
             console.log('Round Winner: Computer');
-            alert('Computer won!');
+            alert(`Computer won! ${computer} beats ${player}!`)
             computerScore++;
         } else if (computer === 'Rock' && player === 'Rock' || computer === 'Paper' && player === 'Paper' || computer === 'Scissors' && player === 'Scissors') {
-            console.log('Draw'); //
-            alert('Draw!');
+            console.log('It\'s a Draw'); //
+            alert('It\'s a Draw!');
         }
     }
 
